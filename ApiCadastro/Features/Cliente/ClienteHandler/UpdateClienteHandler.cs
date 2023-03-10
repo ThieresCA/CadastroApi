@@ -3,20 +3,20 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 
-public class UpdateUserHandler : IRequestHandler<UpdateUserRequest, bool>
+public class UpdateClienteHandler : IRequestHandler<UpdateClienteRequest, bool>
 {
     private readonly ApiCadastroContext _dbContext;
 
-    public UpdateUserHandler(ApiCadastroContext dbContext)
+    public UpdateClienteHandler(ApiCadastroContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public async Task<bool> Handle(UpdateUserRequest request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(UpdateClienteRequest request, CancellationToken cancellationToken)
     {
         try
         {
-            var result = await _dbContext.User.FirstOrDefaultAsync(x => x.Id == request.Id);
+            var result = await _dbContext.Cliente.FirstOrDefaultAsync(x => x.Id == request.Id);
             if (result == null)
             {
                 return false;
@@ -38,13 +38,13 @@ public class UpdateUserHandler : IRequestHandler<UpdateUserRequest, bool>
                 result.Cpf = res;
             }
 
-            if (request.Endereco != null)
-                result.Endereco = request.Endereco;
+            if (request.Adress != null)
+                result.Adress = request.Adress;
 
-            if (request.Idade != null)
-                result.Idade = request.Idade.Value;
+            if (request.Age != null)
+                result.Age = request.Age.Value;
 
-            _dbContext.User.Update(result);
+            _dbContext.Cliente.Update(result);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             return true;

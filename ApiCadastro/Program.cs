@@ -36,6 +36,6 @@ static void ConfigureServices(IServiceCollection services, IConfiguration Config
                 options.UseSqlServer(Configuration.GetConnectionString("ApiCadastro"), builder =>
                     builder.MigrationsAssembly("ApiCadastro")));
 
-    services.AddTransient<UserModel>();
+    services.AddTransient<ClienteModel>();
     services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
 }

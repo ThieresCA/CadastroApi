@@ -1,16 +1,16 @@
 using MediatR;
 
-public class UpdateUserRequest : IRequest<bool>
+public class UpdateClienteRequest : IRequest<bool>
 {
     public int Id { get; set; }
     public string? Name { get; set; }
     public string? Email { get; set; }
     public DateTime? BirthDate { get; set; }
-    public string? Endereco { get; set; }
+    public string? Adress { get; set; }
     public string? Cpf { get; set; }
-    public int? Idade { get; set; }
+    public int? Age { get; set; }
 
-    public UpdateUserRequest(int id)
+    public UpdateClienteRequest(int id)
     {
         Id = id;
     }

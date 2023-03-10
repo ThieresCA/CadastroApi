@@ -2,24 +2,24 @@ using ApiCadastroUser.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-public class DeleteUserHandler : IRequestHandler<DeleteUserRequest, bool>
+public class DeleteClienteHandler : IRequestHandler<DeleteClienteRequest, bool>
 {
     private readonly ApiCadastroContext _dbContext;
 
-    public DeleteUserHandler(ApiCadastroContext dbContext)
+    public DeleteClienteHandler(ApiCadastroContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public async Task<bool> Handle(DeleteUserRequest request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(DeleteClienteRequest request, CancellationToken cancellationToken)
     {
         try
         {
-            var result = await _dbContext.User.FirstOrDefaultAsync(x => x.Id == request.Id);
+            var result = await _dbContext.Cliente.FirstOrDefaultAsync(x => x.Id == request.Id);
             if (result == null)
                 return false;
 
-            _dbContext.User.Remove(result);
+            _dbContext.Cliente.Remove(result);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             return true;

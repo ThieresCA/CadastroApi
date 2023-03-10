@@ -3,29 +3,29 @@ using ApiCadastroUser.Features.User;
 using MediatR;
 using System.Text.RegularExpressions;
 
-public class CreateUserHandler : IRequestHandler<CreateUserRequest, UserModel>
+public class CreateClienteHandler : IRequestHandler<CreateClienteRequest, ClienteModel>
 {
     private readonly ApiCadastroContext _dbContext;
 
-    public CreateUserHandler(ApiCadastroContext dbContext)
+    public CreateClienteHandler(ApiCadastroContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public async Task<UserModel> Handle(CreateUserRequest request, CancellationToken cancellationToken)
+    public async Task<ClienteModel> Handle(CreateClienteRequest request, CancellationToken cancellationToken)
     {
 
 
 
 
 
-        var entity = new UserModel(
+        var entity = new ClienteModel(
             name: request.Name,
             email: request.Email,
             birthDate: request.BirthDate,
-            endereco: request.Endereco,
+            adress: request.Adress,
             cpf: request.Cpf,
-            idade: request.Idade
+            age: request.Age
         );
 
         string input = entity.Cpf;

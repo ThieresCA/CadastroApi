@@ -9,6 +9,6 @@ namespace ApiCadastroUser.Data
             : base(options)
         {
         }
-        public DbSet<UserModel> User { get; set; }
+        public DbSet<ClienteModel> Cliente { get; set; }
     }
 }
