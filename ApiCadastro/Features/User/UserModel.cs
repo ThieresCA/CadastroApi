@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 
 namespace ApiCadastroUser.Features.User
 {
@@ -17,13 +13,23 @@ namespace ApiCadastroUser.Features.User
         public string Name { get; set; }
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
+        public string Endereco { get; set; }
+        public string Cpf { get; set; }
+        public int Idade { get; set; }
 
-        //public UserModel(string name, string email, DateTime birthDate)
-        //{
-        //    Name = name;
-        //    Email = email;
-        //    BirthDate = birthDate;
-        //}
+        public UserModel()
+        {
+
+        }
+        public UserModel(string name, string email, DateTime birthDate, string endereco, string cpf, int idade)
+        {
+            Name = name;
+            Email = email;
+            BirthDate = birthDate;
+            Endereco = endereco;
+            Cpf = cpf;
+            Idade = idade;
+        }
 
     }
 }

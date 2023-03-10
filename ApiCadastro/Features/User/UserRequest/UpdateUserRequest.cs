@@ -6,12 +6,12 @@ public class UpdateUserRequest : IRequest<bool>
     public string? Name { get; set; }
     public string? Email { get; set; }
     public DateTime? BirthDate { get; set; }
+    public string? Endereco { get; set; }
+    public string? Cpf { get; set; }
+    public int? Idade { get; set; }
 
-    public UpdateUserRequest(int id, string name, string email, DateTime birthDate)
+    public UpdateUserRequest(int id)
     {
         Id = id;
-        Name = name;
-        Email = email;
-        BirthDate = birthDate;
     }
 }

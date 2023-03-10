@@ -1,5 +1,4 @@
 using ApiCadastroUser.Data;
-using ApiCadastroUser.Features.User;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +20,7 @@ public class DeleteUserHandler : IRequestHandler<DeleteUserRequest, bool>
                 return false;
 
             _dbContext.User.Remove(result);
+            await _dbContext.SaveChangesAsync(cancellationToken);
 
             return true;
 

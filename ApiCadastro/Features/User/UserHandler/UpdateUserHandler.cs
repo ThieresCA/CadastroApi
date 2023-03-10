@@ -1,7 +1,7 @@
 using ApiCadastroUser.Data;
-using ApiCadastroUser.Features.User;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 public class UpdateUserHandler : IRequestHandler<UpdateUserRequest, bool>
 {
@@ -30,6 +30,19 @@ public class UpdateUserHandler : IRequestHandler<UpdateUserRequest, bool>
 
             if (request.Email != null)
                 result.Email = request.Email;
+
+            if (request.Cpf != null)
+            {
+                string input = request.Cpf;
+                string res = Regex.Replace(input, @"[^\d]", "");
+                result.Cpf = res;
+            }
+
+            if (request.Endereco != null)
+                result.Endereco = request.Endereco;
+
+            if (request.Idade != null)
+                result.Idade = request.Idade.Value;
 
             _dbContext.User.Update(result);
             await _dbContext.SaveChangesAsync(cancellationToken);
